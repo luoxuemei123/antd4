@@ -2,11 +2,16 @@ import React from 'react'
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.less'
+import {getToken} from '../../api'
 import logo from './image/logo1.jpeg'
 const Login = () => {
   const [form] = Form.useForm();
   const onFinish = values => {
-    console.log(values);
+    let data = new FormData();
+    data.append('username','gy_jt01')
+    data.append('password','123456')
+    data.append('grant_type','password')
+    getToken(data)
   };
   return (
     <div className="login">
